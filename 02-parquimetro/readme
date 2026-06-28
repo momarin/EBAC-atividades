@@ -1,0 +1,4 @@
+#Parquimetro
+
+Orientações:
+Criar uma aplicação interativa que simule um parquímetro utilizando POO em JavaScript. O usuário informará o valor e a aplicação calculará o tempo de permanência e troco, se houver.
