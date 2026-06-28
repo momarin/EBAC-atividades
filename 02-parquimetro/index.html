@@ -4,30 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parquímetro</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- JS -->
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="container">
+    <main>
       <header>
         <h1>Parquímetro Estrela</h1>
         <h3>Valor hora: R$ 10,00</h3>
         <h3>Meia hora: R$ 5,00</h3>
       </header>
-      <main>
-        <label for="placa">Placa do Automóvel:</label>
-        <input id="placa" type="text" placeholder="Placa: VHX 0000" required />
-        <label for="permanencia">Tempo de permanência:</label>
-        <input id="permanecia" type="number" />
 
-        <div class="caixa-resultado">
-          <h4>Valor a pagar:</h4>
-          <p id="resultado">R$ 20,00</p>
+      <label for="placa">Placa do Automóvel:</label>
+      <input id="placa" type="text" placeholder="Placa: VHX 0000" required />
+      <label for="permanecia">Tempo de permanência:</label>
+      <input id="permanecia" type="number" placeholder="em minutos" />
 
-          <label for="">Valor recebido:</label>
-          <input id="recebido" type="number" placeholder="00,00" />
-          <label for="troco">Troco:</label>
-          <p id="troco">10,00</p>
-        </div>
-      </main>
-    </div>
+      <div class="caixa-resultado">
+        <h4>Valor a pagar:</h4>
+        <p id="resultado">R$ 20,00</p>
+
+        <label for="recebido">Valor recebido:</label>
+        <input id="recebido" type="number" placeholder="00,00" />
+        <h4>Troco:</h4>
+        <p id="troco">10,00</p>
+      </div>
+    </main>
   </body>
 </html>
