@@ -1,8 +1,63 @@
-// Classe independente
 class Parquimetro {
   // atributo
-  #valor;
+  #valorHora;
   constructor() {
-    this.#valor = 0;
+    this.#valorHora = 10;
+  }
+
+  calcularValor(permanencia) {
+    return (permanencia / 60) * this.#valorHora;
+  }
+
+  calcularTroco(valorPago, valorAPagar) {
+    return valorPago - valorAPagar;
+  }
+
+  get valorHora() {
+    return this.#valorHora;
   }
 }
+
+class Cliente {
+  constructor(parquimetro) {
+    this.parquimetro = parquimetro;
+  }
+
+  calcular() {
+    const permanencia = document.getElementById("permanencia").value;
+
+    if (!permanencia) {
+      alert("Preencha tempo de permanência");
+      return;
+    }
+
+    const valorAPagar = this.parquimetro.calcularValor(permanencia);
+    document.getElementById("resultado").textContent =
+      `R$ ${valorAPagar.toFixed(2)}`;
+    document.getElementById("troco").textContent = "R$ 00,00";
+    document.getElementById("recebido").value = "";
+  }
+
+  calcularTroco() {
+    const valorRecebido = document.getElementById("recebido").value;
+    const resultado = document.getElementById("resultado").textContent;
+    const valorAPagar = parseFloat(
+      resultado.replace("R$ ", "").replace(",", "."),
+    );
+
+    if (!valorRecebido) {
+      alert("Preencha o valor recebido");
+      return;
+    }
+
+    if (valorRecebido < valorAPagar) {
+      alert("Valor insuficiente");
+      return;
+    }
+
+    const troco = this.parquimetro.calcularTroco(valorRecebido, valorAPagar);
+    document.getElementById("troco").textContent = `R$ ${troco.toFixed(2)}`;
+  }
+}
+const parquimetro = new Parquimetro();
+const cliente = new Cliente(parquimetro);

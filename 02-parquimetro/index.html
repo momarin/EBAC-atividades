@@ -18,20 +18,19 @@
         <h3>Meia hora: R$ 5,00</h3>
       </header>
 
-      <label for="placa">Placa do Automóvel:</label>
-      <input id="placa" type="text" placeholder="Placa: VHX 0000" required />
-      <label for="permanecia">Tempo de permanência:</label>
-      <input id="permanecia" type="number" placeholder="em minutos" />
-      <button>Calcular</button>
+      <label for="permanencia">Tempo de permanência:</label>
+      <input id="permanencia" type="number" placeholder="em minutos" required />
+      <button onclick="cliente.calcular()">Calcular</button>
 
       <div class="caixa-resultado">
         <h4>Valor a pagar:</h4>
-        <p id="resultado">R$ 20,00</p>
+        <p id="resultado">R$ 00,00</p>
 
         <label for="recebido">Valor recebido:</label>
         <input id="recebido" type="number" placeholder="00,00" />
+        <button onclick="cliente.calcularTroco()">Calcular</button>
         <h4>Troco:</h4>
-        <p id="troco">10,00</p>
+        <p id="troco">00,00</p>
       </div>
     </main>
   </body>
