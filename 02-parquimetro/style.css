@@ -38,6 +38,11 @@ label {
   font-family: inherit;
   font-size: 20px;
 }
+span {
+  background-color: rgba(206, 71, 17, 0.575);
+  padding: 2px;
+  border-radius: 8px;
+}
 /* ------------ MAIN ------------*/
 main {
   border: 1px solid var(--box-color);

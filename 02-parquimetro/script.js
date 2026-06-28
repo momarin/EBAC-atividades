@@ -6,7 +6,15 @@ class Parquimetro {
   }
 
   calcularValor(permanencia) {
-    return (permanencia / 60) * this.#valorHora;
+    if (permanencia <= 30) {
+      return 1.0;
+    } else if (permanencia <= 60) {
+      return 1.75;
+    } else if (permanencia <= 120) {
+      return 3.0;
+    } else {
+      return "Tempo excedido";
+    }
   }
 
   calcularTroco(valorPago, valorAPagar) {
@@ -28,6 +36,11 @@ class Cliente {
 
     if (!permanencia) {
       alert("Preencha tempo de permanência");
+      return;
+    }
+
+    if (permanencia > 120) {
+      alert("Tempo não deve ser maior que 120");
       return;
     }
 
