@@ -46,13 +46,15 @@ class Cliente {
 
     const valorAPagar = this.parquimetro.calcularValor(permanencia);
     document.getElementById("resultado").textContent =
-      `R$ ${valorAPagar.toFixed(2)}`;
+      `R$ ${valorAPagar.toFixed(2).replace(".", ",")}`;
     document.getElementById("troco").textContent = "R$ 00,00";
     document.getElementById("recebido").value = "";
   }
 
   calcularTroco() {
-    const valorRecebido = document.getElementById("recebido").value;
+    const valorRecebido = parseFloat(
+      document.getElementById("recebido").value.replace(",", "."),
+    );
     const resultado = document.getElementById("resultado").textContent;
     const valorAPagar = parseFloat(
       resultado.replace("R$ ", "").replace(",", "."),
@@ -69,7 +71,8 @@ class Cliente {
     }
 
     const troco = this.parquimetro.calcularTroco(valorRecebido, valorAPagar);
-    document.getElementById("troco").textContent = `R$ ${troco.toFixed(2)}`;
+    document.getElementById("troco").textContent =
+      `R$ ${troco.toFixed(2).replace(".", ",")}`;
   }
 }
 const parquimetro = new Parquimetro();
