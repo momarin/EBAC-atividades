@@ -62,3 +62,6 @@ button {
   font-size: 16px;
   border-width: 0;
 }
+#btn-limpar {
+  background-color: orange;
+}
