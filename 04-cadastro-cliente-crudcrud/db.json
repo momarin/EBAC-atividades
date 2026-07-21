@@ -6,11 +6,6 @@
       "id": "VPMrMq25qjI"
     },
     {
-      "nome": "marina",
-      "email": "marina",
-      "id": "5_Y52aKrlrs"
-    },
-    {
       "nome": "morena",
       "email": "molina@email.com",
       "id": "LueQVuGpSTw"
@@ -19,6 +14,11 @@
       "nome": "veronica",
       "email": "verina@email.com",
       "id": "9XQXI85N5TQ"
+    },
+    {
+      "nome": "banana",
+      "email": "banana@email.com",
+      "id": "BPOoH3L9h0E"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

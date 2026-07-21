@@ -7,8 +7,10 @@ const campoEmail = document.getElementById("email");
 const btnCadastro = document.querySelector(".btn-primary");
 const btnLimpar = document.querySelector(".btn-secondary");
 const listaClientes = document.querySelector("ul");
+
 /* ===================== FUNÇÕES ===================== */
-// Listar Clientes Cadastrados
+
+// Listar Clientes GET
 async function listarClientes() {
   const resposta = await fetch(API_URL);
   const clientes = await resposta.json();
@@ -23,15 +25,41 @@ async function listarClientes() {
   clientes.forEach((cliente) => {
     const li = document.createElement("li");
     li.innerHTML = `
-    <div>
-                <strong>${cliente.nome}</strong> - ${cliente.email}
-                <button class="btn-delete" data-id="${cliente.id}">X</button>
-            </div>
-  `;
+      <div>
+        <strong>${cliente.nome}</strong> - ${cliente.email}
+        <button class="btn-delete" data-id="${cliente.id}">X</button>
+      </div>
+    `;
     listaClientes.appendChild(li);
   });
 }
-// Cadastrar
+
+// Deletar DELETE
+async function deletarClientes(id) {
+  if (!confirm("Tem certeza que deseja excluir?")) {
+    return;
+  }
+
+  try {
+    const resposta = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!resposta.ok) {
+      throw new Error("Erro ao deletar cliente");
+    }
+
+    listarClientes();
+    console.log("Cliente deletado");
+  } catch (erro) {
+    console.log("Erro ao deletar", erro);
+    alert("Erro ao deletar cliente, tente novamente.");
+  }
+}
+
+/* ===================== EVENT LISTENERS ===================== */
+
+// Cadastar POST
 btnCadastro.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -55,6 +83,7 @@ btnCadastro.addEventListener("click", async (e) => {
 
   listarClientes();
 });
+
 // Limpar Campos
 btnLimpar.addEventListener("click", (e) => {
   e.preventDefault();
@@ -63,4 +92,16 @@ btnLimpar.addEventListener("click", (e) => {
   campoNome.focus();
 });
 
+// Event Listener Botão X
+listaClientes.addEventListener("click", (e) => {
+  const botaoX = e.target.closest(".btn-delete");
+
+  if (botaoX) {
+    const id = botaoX.dataset.id;
+    deletarClientes(id);
+  }
+});
+
+/* ===================== INICIAR ===================== */
+// Carregar lista ao iniciar (AGORA DEPOIS DA DECLARAÇÃO)
 listarClientes();
