@@ -9,6 +9,16 @@
       "nome": "marina",
       "email": "marina",
       "id": "5_Y52aKrlrs"
+    },
+    {
+      "nome": "morena",
+      "email": "molina@email.com",
+      "id": "LueQVuGpSTw"
+    },
+    {
+      "nome": "veronica",
+      "email": "verina@email.com",
+      "id": "9XQXI85N5TQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
