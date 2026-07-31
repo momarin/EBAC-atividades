@@ -1,5 +1,5 @@
 export class ClientesAPI {
-  #apiUrl = "https://localhost:3000/clientes";
+  #apiUrl = "http://localhost:3000/clientes";
 
   async listar() {
     const response = await fetch(this.#apiUrl);

@@ -19,6 +19,11 @@
       "nome": "banana",
       "email": "banana@email.com",
       "id": "BPOoH3L9h0E"
+    },
+    {
+      "nome": "lasanha",
+      "email": "lasanha@lasanha",
+      "id": "UxVd_o1RGgk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
