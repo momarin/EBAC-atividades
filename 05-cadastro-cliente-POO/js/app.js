@@ -13,9 +13,7 @@ import {
 const api = new ClientesAPI();
 
 // DOM
-const campoNome = document.getElementById("nome");
-const campoEmail = document.getElementById("email");
-const btnCadastro = document.querySelector(".btn-primary");
+const formulario = document.querySelector("form");
 const btnLimpar = document.querySelector(".btn-secondary");
 const listaClientes = document.querySelector("ul");
 
@@ -52,11 +50,11 @@ async function deletarClientes(id) {
 }
 
 // Event Listeners
-btnCadastro.addEventListener("click", async (e) => {
+formulario.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const nome = campoNome.value.trim();
-  const email = campoEmail.value.trim();
+  const nome = formulario.elements.nome.value.trim();
+  const email = formulario.elements.email.value.trim();
 
   if (!validar(nome, email)) {
     alertaErro("Preencha todos os campos");
@@ -64,13 +62,18 @@ btnCadastro.addEventListener("click", async (e) => {
   }
 
   await api.cadastrar(nome, email);
-  limpar(campoNome, campoEmail);
-  carregarClientes();
+  carregarClientes;
+  formulario.reset();
 });
 
 btnLimpar.addEventListener("click", (e) => {
   e.preventDefault();
-  limpar(campoNome, campoEmail);
+  formulario.reset();
+
+  const primeiroInput = formulario.elements.nome;
+  if (primeiroInput) {
+    primeiroInput.focus();
+  }
 });
 
 listaClientes.addEventListener("click", (e) => {
