@@ -1,35 +1,27 @@
-export class Cadastro {
-  #nome;
-  #email;
+export class ClientesAPI {
+  #apiUrl = "https://localhost:3000/clientes";
 
-  constructor(nome, email) {
-    this.#nome = nome;
-    this.#email = email;
+  async listar() {
+    const response = await fetch(this.#apiUrl);
+    const clientes = await response.json();
+    return clientes;
   }
 
-  get nome() {
-    return this.#nome;
+  async cadastrar(nome, email) {
+    await fetch(this.#apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email }),
+    });
   }
 
-  get email() {
-    return this.#email;
-  }
-}
+  async deletar(id) {
+    const response = await fetch(`${this.#apiUrl}/${id}`, {
+      method: "DELETE",
+    });
 
-export class Clientes {
-  #clientes = [];
-
-  constructor() {}
-  adicionar() {
-    const cliente = new Cadastro(nome, email);
-    this.#clientes.push(cliente);
-    return cliente;
-  }
-
-  listar() {
-    return [...this.#clientes];
-  }
-  get todos() {
-    return this.#clientes.length;
+    if (!response.ok) {
+      throw new Error("Erro ao deletar cliente");
+    }
   }
 }

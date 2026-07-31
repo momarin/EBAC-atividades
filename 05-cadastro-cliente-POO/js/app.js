@@ -1,2 +1,2 @@
-import { Cadastro, Clientes } from "./classes.js";
+import { ClientesAPI, Clientes } from "./classes.js";
 import {} from "./utils.js";
